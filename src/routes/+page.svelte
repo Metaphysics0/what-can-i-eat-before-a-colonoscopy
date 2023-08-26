@@ -1,12 +1,8 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { getHostedImageUrl } from '$lib/utils/getHostedImageUrl';
 	import Disclaimer from '../ui/Disclaimer.svelte';
 	import Form from '../ui/Form.svelte';
 	import Header from '../ui/Header.svelte';
-
-	let query = new URLSearchParams($page.url.searchParams.toString());
-	console.log('QUERY', query);
 </script>
 
 <center class="mx-auto">

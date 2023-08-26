@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { getHostedImageUrl } from '$lib/utils/getHostedImageUrl';
+	import Disclaimer from '../ui/Disclaimer.svelte';
 	import Form from '../ui/Form.svelte';
 	import Header from '../ui/Header.svelte';
 
@@ -25,6 +26,7 @@
 			class="sm:max-w-20 md:max-w-30 lg:max-w-40 xl:display-block xl:max-w-1/4 object-contain"
 		/>
 	</main>
+	<Disclaimer />
 </center>
 
 <style>

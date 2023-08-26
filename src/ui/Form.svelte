@@ -4,7 +4,11 @@
 		name="searchText"
 		id="searchText"
 		placeholder="Type food here (Ex. banana)"
-		class="mb-2 py-2.5 focus:border-amber active:border-amber"
+		class="mb-2 py-2.5 text-lg outline-none focus:border-amber active:border-amber transition rounded"
 	/>
-	<button type="submit" class="w-fit mx-auto px-2 py-1 bg-amber! border border-1">Search</button>
+	<button
+		type="submit"
+		class="w-fit text-lg mx-auto px-3 py-1 rounded bg-amber! hover:bg-amber-500! transition border-amber-5! border"
+		>Search</button
+	>
 </form>

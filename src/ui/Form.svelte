@@ -1,8 +1,8 @@
-<form action="?getResults" class="flex flex-col font-sans">
+<form method="POST" class="flex flex-col font-sans">
 	<input
 		type="text"
-		name="searchQuery"
-		id="searchQuery"
+		name="searchText"
+		id="searchText"
 		placeholder="Type food here (Ex. banana)"
 		class="mb-2 py-2.5 focus:border-amber active:border-amber"
 	/>

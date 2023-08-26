@@ -3,6 +3,9 @@ import { presetForms } from '@julr/unocss-preset-forms';
 
 export default defineConfig({
 	theme: {
+		screens: {
+			xs: { max: '400px' }
+		},
 		colors: {
 			blue: '#0d6efd',
 			indigo: '#6610f2',

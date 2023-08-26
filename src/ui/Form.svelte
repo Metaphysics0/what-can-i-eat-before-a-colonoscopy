@@ -1,4 +1,4 @@
-<form method="POST" class="flex flex-col font-sans">
+<form method="POST" action="?/byText" class="flex flex-col font-sans">
 	<input
 		type="text"
 		name="searchText"
@@ -8,7 +8,7 @@
 	/>
 	<button
 		type="submit"
-		class="w-fit text-lg mx-auto px-3 py-1 rounded bg-amber! hover:bg-amber-500! transition border-amber-5! border"
+		class="w-fit text-lg mx-auto px-3 py-1 rounded bg-amber! hover:bg-amber-500! transition border-amber-5! border transition"
 		>Search</button
 	>
 </form>

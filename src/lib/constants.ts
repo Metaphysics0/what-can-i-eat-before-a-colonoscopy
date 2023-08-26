@@ -1,1 +1,1 @@
-export const CLOUDFRONT_DOMAIN = 'https://dk7xilc1p59yo.cloudfront.net/img/';
+export const CLOUDFRONT_HOSTNAME = 'https://dk7xilc1p59yo.cloudfront.net/img';

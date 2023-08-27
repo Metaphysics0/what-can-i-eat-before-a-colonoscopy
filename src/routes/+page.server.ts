@@ -10,14 +10,19 @@ export const actions = {
 		}
 
 		const result = await findFoodBySubType({ searchText });
-		console.log('RESULT', result);
+		if (!result) {
+			const errorMessage = `Unable to find information about: ${searchText}`;
+			console.error(errorMessage);
+			throw errorMessage;
+		}
+		return result;
 	}
 } satisfies Actions;
 
 async function findFoodBySubType({ searchText }: { searchText: FormDataEntryValue }) {
 	return prisma.foods.findFirst({
 		where: {
-			subType: {
+			name: {
 				contains: String(searchText),
 				mode: 'insensitive'
 			}

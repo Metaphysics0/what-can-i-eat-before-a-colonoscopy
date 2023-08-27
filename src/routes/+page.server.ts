@@ -20,7 +20,7 @@ export const actions = {
 } satisfies Actions;
 
 async function findFoodBySubType({ searchText }: { searchText: FormDataEntryValue }) {
-	return prisma.foods.findFirst({
+	return prisma.food.findFirst({
 		where: {
 			name: {
 				contains: String(searchText),

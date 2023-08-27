@@ -1,8 +1,16 @@
 <script lang="ts">
 	import { getHostedImageUrl } from '$lib/utils/getHostedImageUrl';
+	import type { Food } from '@prisma/client';
+	import { selectedFood as selectedFoodStore } from '../stores/selectedFood';
 	import Disclaimer from '../ui/Disclaimer.svelte';
 	import Form from '../ui/Form.svelte';
 	import Header from '../ui/Header.svelte';
+	import SelectedFood from '../ui/SelectedFood.svelte';
+
+	let selectedFood: Food | undefined;
+	selectedFoodStore.subscribe((val) => {
+		selectedFood = val;
+	});
 </script>
 
 <center class="mx-auto">
@@ -13,8 +21,12 @@
 			class="sm:max-w-20 md:max-w-30 lg:max-w-40 xl:display-block xl:max-w-1/4 object-contain"
 		/>
 		<div class="flex flex-col mx-5 my-auto">
-			<Header />
-			<Form />
+			{#if selectedFood}
+				<SelectedFood {selectedFood} />
+			{:else}
+				<Header />
+				<Form />
+			{/if}
 		</div>
 		<img
 			src={getHostedImageUrl('Doctor11.webp')}

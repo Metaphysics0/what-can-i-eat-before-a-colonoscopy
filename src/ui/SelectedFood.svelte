@@ -1,0 +1,18 @@
+<script lang="ts">
+	import type { Food } from '@prisma/client';
+
+	export let selectedFood: Food;
+
+	const friendlyText = {
+		'0': 'Stop consuming it 24 hours before your colonoscopy',
+		'1': 'Stop consuming it 2 days before your colonoscopy',
+		'2': 'Stop consuming it 3 days before your colonoscopy',
+		'3': 'Stop consuming it 4 days before your colonoscopy'
+	};
+</script>
+
+<div class="font-sans">
+	<h3 class="text-xl">Results for:</h3>
+	<strong class="text-danger font-bold">"{selectedFood.name}"</strong>
+	<p>{friendlyText[selectedFood.number]}</p>
+</div>

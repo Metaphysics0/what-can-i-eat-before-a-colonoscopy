@@ -1,5 +1,11 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
+	import { enhance, applyAction } from '$app/forms';
+	import type { Food } from '@prisma/client';
+	import { selectedFood } from '../stores/selectedFood';
+
+	function setSelectedFood(result: Food) {
+		selectedFood.set(result);
+	}
 </script>
 
 <form
@@ -13,10 +19,11 @@
 		// `submitter` is the `HTMLElement` that caused the form to be submitted
 
 		return async ({ result, update }) => {
-			console.log('RESULT', result);
-
-			// `result` is an `ActionResult` object
-			// `update` is a function which triggers the default logic that would be triggered if this callback wasn't set
+			if (result.type === 'error') {
+				await applyAction(result);
+			}
+			// @ts-ignore
+			setSelectedFood(result.data);
 		};
 	}}
 >

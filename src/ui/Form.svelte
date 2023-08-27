@@ -3,6 +3,7 @@
 	import { selectedFood } from '../stores/selectedFood';
 	import { apiService } from '$lib/apiService';
 	import { searchResultsStore, shouldShowSearchResultsStore } from '../stores/searchResultsStore';
+	import Button from './common/Button.svelte';
 
 	const debounceTimeInMs = 300;
 
@@ -51,9 +52,5 @@
 		placeholder="Type food here (Ex. banana)"
 		class="flex-1 text-lg outline-none focus:border-amber active:border-amber transition rounded-l"
 	/>
-	<button
-		type="submit"
-		class="w-fit px-2 text-lg bg-amber! hover:bg-amber-500! transition border-amber! rounded-r border transition"
-		>Search</button
-	>
+	<Button type="submit" text="Search" />
 </form>

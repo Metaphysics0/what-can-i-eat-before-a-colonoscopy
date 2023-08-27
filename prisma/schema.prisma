@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model foods {
+model Food {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
   category String
   name     String

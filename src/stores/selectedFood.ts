@@ -1,4 +1,4 @@
 import { writable } from 'svelte/store';
-import type { foods } from '@prisma/client';
+import type { Food } from '@prisma/client';
 
-export const selectedFood = writable<foods>();
+export const selectedFood = writable<Food>();

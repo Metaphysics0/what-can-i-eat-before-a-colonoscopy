@@ -17,8 +17,7 @@
 </script>
 
 <div class="font-sans">
-	<h3 class="text-xl">Results for:</h3>
-	<strong class="text-danger font-bold">"{selectedFood.name}"</strong>
-	<p>{friendlyText[selectedFood.number]}</p>
-	<button on:click={removeSelectedFood}>Search again?</button>
+	<h3 class="text-3xl text-danger font-bold">{selectedFood.name}</h3>
+	<p class="text-xl mb-2">{friendlyText[selectedFood.number]}.</p>
+	<button on:click={removeSelectedFood}>Search again</button>
 </div>

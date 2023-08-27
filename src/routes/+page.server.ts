@@ -9,7 +9,7 @@ export const actions = {
 			throw 'invalid input';
 		}
 
-		const result = await findFoodBySubType({ searchText });
+		const result = await findFoodBySearchText({ searchText });
 		if (!result) {
 			const errorMessage = `Unable to find information about: ${searchText}`;
 			console.error(errorMessage);
@@ -19,7 +19,7 @@ export const actions = {
 	}
 } satisfies Actions;
 
-async function findFoodBySubType({ searchText }: { searchText: FormDataEntryValue }) {
+async function findFoodBySearchText({ searchText }: { searchText: FormDataEntryValue }) {
 	return prisma.food.findFirst({
 		where: {
 			name: {

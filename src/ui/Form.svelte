@@ -1,38 +1,57 @@
 <script lang="ts">
-	import { enhance, applyAction } from '$app/forms';
+	import { enhance } from '$app/forms';
 	import type { Food } from '@prisma/client';
 	import { selectedFood } from '../stores/selectedFood';
+	import { apiService } from '$lib/apiService';
+	import { searchResultsStore } from '../stores/searchResultsStore';
 
-	function setSelectedFood(result: Food) {
-		selectedFood.set(result);
+	const debounceTimeInMs = 300;
+
+	async function searchForFoodsByText(text: string) {
+		if (!text) {
+			searchResultsStore.set([]);
+			return;
+		}
+
+		const searchResults = await apiService.search.byName(text);
+		searchResultsStore.set(searchResults);
+	}
+
+	let timer: any;
+	function debounceAndSearch(target: EventTarget | null) {
+		clearTimeout(timer);
+		timer = setTimeout(async () => {
+			// @ts-ignore
+			await searchForFoodsByText(target.value);
+		}, debounceTimeInMs);
 	}
 </script>
 
 <form
 	method="POST"
-	class="flex flex-col font-sans"
-	use:enhance={({ formElement, formData, action, cancel, submitter }) => {
+	class="flex font-sans"
+	use:enhance={() => {
 		return async ({ result, update }) => {
-			console.log('RESULT', result);
-
 			if (result.type === 'error') {
-				await applyAction(result);
+				console.error('error!', result);
 			}
 			// @ts-ignore
-			setSelectedFood(result.data);
+			selectedFood.set(result.data);
 		};
 	}}
 >
 	<input
 		type="text"
 		name="searchText"
+		autocomplete="off"
 		id="searchText"
+		on:keyup={({ target }) => debounceAndSearch(target)}
 		placeholder="Type food here (Ex. banana)"
-		class="mb-2 py-2.5 text-lg outline-none focus:border-amber active:border-amber transition rounded"
+		class="flex-1 text-lg outline-none focus:border-amber active:border-amber transition rounded-l"
 	/>
 	<button
 		type="submit"
-		class="w-fit text-lg mx-auto px-3 py-1 rounded bg-amber! hover:bg-amber-500! transition border-amber-5! border transition"
+		class="w-fit px-2 text-lg bg-amber! hover:bg-amber-500! transition border-amber! rounded-r border transition"
 		>Search</button
 	>
 </form>

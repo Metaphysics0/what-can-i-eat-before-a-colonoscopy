@@ -6,6 +6,7 @@
 	import Form from '../ui/Form.svelte';
 	import Header from '../ui/Header.svelte';
 	import SelectedFood from '../ui/SelectedFood.svelte';
+	import SearchResults from '../ui/SearchResults/List.svelte';
 
 	let selectedFood: Food | undefined;
 	selectedFoodStore.subscribe((val) => {
@@ -26,6 +27,7 @@
 			{:else}
 				<Header />
 				<Form />
+				<SearchResults />
 			{/if}
 		</div>
 		<img

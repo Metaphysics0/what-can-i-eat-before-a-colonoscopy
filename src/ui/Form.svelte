@@ -1,4 +1,4 @@
-<form method="POST" action="?/byText" class="flex flex-col font-sans">
+<form method="POST" class="flex flex-col font-sans">
 	<input
 		type="text"
 		name="searchText"

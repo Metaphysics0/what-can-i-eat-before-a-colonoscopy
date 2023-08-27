@@ -8,9 +8,8 @@ datasource db {
 }
 
 model foods {
-  id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  Message  String?
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
   category String
+  name     String
   number   Int
-  subType  String
 }

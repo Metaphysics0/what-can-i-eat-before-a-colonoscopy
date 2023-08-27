@@ -12,13 +12,9 @@
 	method="POST"
 	class="flex flex-col font-sans"
 	use:enhance={({ formElement, formData, action, cancel, submitter }) => {
-		// `formElement` is this `<form>` element
-		// `formData` is its `FormData` object that's about to be submitted
-		// `action` is the URL to which the form is posted
-		// calling `cancel()` will prevent the submission
-		// `submitter` is the `HTMLElement` that caused the form to be submitted
-
 		return async ({ result, update }) => {
+			console.log('RESULT', result);
+
 			if (result.type === 'error') {
 				await applyAction(result);
 			}

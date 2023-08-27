@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import type { Food } from '@prisma/client';
 	import { selectedFood } from '../stores/selectedFood';
 	import { apiService } from '$lib/apiService';
-	import { searchResultsStore } from '../stores/searchResultsStore';
+	import { searchResultsStore, shouldShowSearchResultsStore } from '../stores/searchResultsStore';
 
 	const debounceTimeInMs = 300;
 
@@ -44,7 +43,10 @@
 		type="text"
 		name="searchText"
 		autocomplete="off"
+		required={true}
 		id="searchText"
+		on:focus={() => shouldShowSearchResultsStore.set(true)}
+		on:blur={() => shouldShowSearchResultsStore.set(false)}
 		on:keyup={({ target }) => debounceAndSearch(target)}
 		placeholder="Type food here (Ex. banana)"
 		class="flex-1 text-lg outline-none focus:border-amber active:border-amber transition rounded-l"

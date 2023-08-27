@@ -10,6 +10,8 @@
 
 	let selectedFood: Food | undefined;
 	selectedFoodStore.subscribe((val) => {
+		console.log('val', val);
+
 		selectedFood = val;
 	});
 </script>
@@ -21,7 +23,7 @@
 			alt="fruits"
 			class="sm:max-w-20 md:max-w-30 lg:max-w-40 xl:display-block xl:max-w-1/4 object-contain"
 		/>
-		<div class="flex flex-col mx-5 my-auto">
+		<div class="flex flex-col mx-5 my-auto relative min-w-125">
 			{#if selectedFood}
 				<SelectedFood {selectedFood} />
 			{:else}

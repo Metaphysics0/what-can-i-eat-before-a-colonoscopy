@@ -6,6 +6,8 @@
 	export let item: Food;
 
 	function setSearchResult(): void {
+		console.log('setting item!', item);
+
 		selectedFood.set(item);
 		searchResultsStore.set([]);
 	}
